@@ -97,13 +97,6 @@ npm run dev
 
 Run the command in each directory where the script is configured.
 
-## Security
-
-- Store credentials and sensitive configuration in environment variables.
-- Do not commit `.env` files or secrets to version control.
-- Validate incoming requests on the server.
-- Apply appropriate authorization to staff operations.
-- Protect patient information and database access.
 
 ## Project Status
 
