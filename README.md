@@ -116,7 +116,7 @@ TypeScript will be used for the React frontend, and JavaScript or TypeScript wil
 
 ## 8. Draft Architectural Flow Diagram
 
-![KramSetu High-Level Architecture](docs/architecture.png)
+![KramSetu High-Level Architecture](docs/architecture.jpeg)
 
 ### Architecture Explanation
 
