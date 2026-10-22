@@ -116,7 +116,65 @@ TypeScript will be used for the React frontend, and JavaScript or TypeScript wil
 
 ## 8. Draft Architectural Flow Diagram
 
-![KramSetu High-Level Architecture](docs/architecture.jpeg)
+## System Architecture
+
+```mermaid
+flowchart TD
+    %% Users
+    subgraph USERS["Users"]
+        direction LR
+        P["Patient<br/>(Book, Track Queue)"]
+        D["Doctor<br/>(View, Call, Update)"]
+        R["Receptionist<br/>(Register Walk-ins, Manage Queue)"]
+        A["Admin<br/>(Manage Doctors, Departments)"]
+    end
+
+    FE["React Frontend<br/>(TypeScript + Vite)"]
+    CLERK["Clerk Authentication<br/>(Sign In / Sign Up)"]
+    API["Node.js + Express<br/>(REST API + Business Logic)"]
+    RBAC["RBAC<br/>(Role & Permission Checks)"]
+
+    subgraph MODULES["Backend Modules"]
+        direction LR
+        M1["Doctor & Department<br/>Management"]
+        M2["Appointment<br/>Management"]
+        M3["Queue Management<br/>& Token Generation"]
+        M4["Queue Position &<br/>ETA Calculation"]
+    end
+
+    DB[("MongoDB<br/>(Database)")]
+    SIO["Socket.IO<br/>(Real-time Updates)"]
+
+    %% Flows
+    USERS --> FE
+    FE -->|"Authenticate & Verify User"| CLERK
+    CLERK -->|"Auth Response"| FE
+
+    FE -->|"API Requests (Protected Routes)"| API
+    API -->|"Responses (Data + Errors)"| FE
+
+    API <--> RBAC
+    API --> MODULES
+    MODULES <--> DB
+
+    SIO --> MODULES
+    SIO -->|"Live Updates (Queue Status, Token Changes)"| FE
+
+    %% Styling
+    classDef frontend fill:#e0f2fe,stroke:#0ea5e9,color:#0c4a6e;
+    classDef auth fill:#ede9fe,stroke:#8b5cf6,color:#4c1d95;
+    classDef backend fill:#dcfce7,stroke:#22c55e,color:#14532d;
+    classDef rbac fill:#fef3c7,stroke:#f59e0b,color:#78350f;
+    classDef db fill:#ede9fe,stroke:#8b5cf6,color:#4c1d95;
+    classDef rt fill:#fce7f3,stroke:#ec4899,color:#831843;
+
+    class FE frontend;
+    class CLERK auth;
+    class API backend;
+    class RBAC rbac;
+    class DB db;
+    class SIO rt;
+```
 
 ### Architecture Explanation
 
