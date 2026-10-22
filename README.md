@@ -205,12 +205,17 @@ Features that may be considered after the MVP include:
 
 These enhancements are not required for the first working version.
 
-## 11. Team Collaboration
+## 11.  Team Collaboration and Task Distribution
 
-The project will be developed collaboratively using Git and GitHub.
+KramSetu is developed collaboratively by four team members, with each member responsible for a specific module.
 
-- Each member will work on an assigned feature or module.
-- Changes will be committed with meaningful commit messages.
-- Feature branches will be used for individual tasks.
-- Pull requests will be reviewed by teammates before merging.
-- The team will maintain the README and update the proposal as the architecture evolves.
+| Team Member | Module | Responsibilities |
+|---|---|---|
+| **Athira (Member 1)** | Patient Frontend | Develop the patient interface, doctor and department listings, appointment booking, token display, and queue status dashboard. |
+| **Ashwini (Member 2)** | Backend Foundation & Appointment Management | Set up the Express server and MongoDB connection, implement Clerk authentication and role-based access control, create User, Doctor, Department, and Appointment models, and develop the corresponding APIs. |
+| **Bhagyashree (Member 3)** | Queue Management Engine | Implement token generation, queue ordering, queue position and estimated waiting time calculation, call-next and consultation completion operations, skip/no-show handling, and Socket.IO queue updates. |
+| **Ananya (Member 4)** | Doctor, Receptionist & Admin Frontend | Develop role-specific dashboards, doctor queue controls, receptionist walk-in registration, and basic department and doctor management interfaces. |
+
+
+
+
